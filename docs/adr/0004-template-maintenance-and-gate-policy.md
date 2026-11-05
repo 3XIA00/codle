@@ -34,6 +34,8 @@ Chosen option: "install kintsugi, fix the machine, fix the scripts", because it'
 * `scripts/groups-lookup.py` and `scripts/registry_lib.py` now pass `encoding="utf-8"` to `open()`. Regression tests in `tests/test_template_scripts.py` run both scripts under `-X warn_default_encoding -W error::EncodingWarning`, so the bug is caught on any OS, not only on GBK machines.
 * The `gate` recipe's project slot now runs `python3 -m unittest discover -s tests`, until the Vue app's `npm test` and `npm run build` join it (ADR-0001).
 
+* Workspace settings (3XIA00, 2026-11-05): `.vscode/settings.json` reverses two template defaults on purpose. The teal `workbench.colorCustomizations` is removed, and `chat.disableAIFeatures` is `false` (VS Code's built-in AI chat stays available). These are committed rather than kept in user settings because workspace settings override user settings, so only the committed file controls what a fresh clone gets.
+
 ### Negative Consequences
 
 * `justfile` and two `scripts/` files are now local changes to template-managed files. kintsugi will show them as drift and ask keep/take/merge at the next `kintsugi update`. Keep ours unless the template ships the same fix.
