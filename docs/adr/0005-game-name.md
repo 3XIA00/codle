@@ -9,8 +9,8 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 # ADR-0005: Game name
 
 - **Date**: 2026-11-05
-- **Iteration**: 1
-- **Status**: Draft
+- **Iteration**: 2
+- **Status**: Accepted
 - **Deciders**: 3XIA00, Claude Opus 5.5
 
 **TL;DR**: "Wordle" is the New York Times' trademark, and being non-commercial doesn't make it safe. What do we call the game on screen, and does the repo name change too?
@@ -43,7 +43,7 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 ## Questions
 
 ### QST-NAME: What should the game be called, and does the repo rename too?
-- Status: unanswered
+- Status: answered
 - Why asking: "Wordle" is a NYT trademark. Copycats on GitHub have received takedowns even when non-commercial, and our site will be public at `3XIA00.github.io/<repo-name>/`. The name appears in the page title, the header, and the shared-result text. A repo rename changes the Pages URL and the Vite `base` path (ADR-0001), so it's cheapest to do before the first deploy.
 - Need: pick a letter, and propose a name if you have one (or override — any shape answers)
 
@@ -57,7 +57,17 @@ Options:
 **A — Own name in the UI, rename the repo before the first deploy.** *Rationale*: The difference between A and B is a single rename (GitHub redirects old clone URLs automatically), done now while ADR-0001's `base` path is still unwritten. After the first deploy, links in the wild would break. A means nothing public carries the trademark, and an original name is also simply better identity for your first deliberately built project. I'm also not going to build this as a copy of the original under its name or look; the genre mechanic is fine, and an original name and look is the version I can help with fully. *Confidence*: 0.75 — because the takedown pattern is real, but my memory of its details (date, scale) is from news reporting I can't check here, and a course project may never draw attention either way. *If wrong*: if 3XIA00 prefers the repo URL stay stable (e.g. it's already been submitted for a course), this flips to **B**.
 
 **ANS:** (by 3XIA00)
-[Fill this in]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+[Go with A. Lets call it "Codle" (which is code+wordle)]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+
+---
+
+## Decision
+
+- **Name: Codle** (code + -dle). Used for the page title, the header, and the share text.
+- **Repo renamed** `wordle-with-records` → `codle` (3XIA00 approved the rename in chat, 2026-11-05). Pages URL: `https://3XIA00.github.io/codle/`.
+- **Own look**: a code-editor palette and monospace type, not the original's colors or layout.
+
+NOT: "Codle" isn't unique. As far as I know, other small word games use the same "code + -dle" coinage. I know of no registered trademark on it, but I can't check from here. If it matters (say, before promoting it widely), search the USPTO trademark database and the web for "Codle" first.
 
 ---
 
@@ -68,6 +78,12 @@ Options:
 - Contributors: 3XIA00, Claude Opus 5.5
 - Changes: Created, with one open question (QST-NAME). Supersedes the naming bullet in ADR-0003's Open Follow-ups.
 - Outcome: Draft
+
+### Iteration 2 (2026-11-05)
+- Trigger: 3XIA00 answered QST-NAME (A, "Codle") and approved the repo rename in chat.
+- Contributors: 3XIA00 (decision), Claude Opus 5.5 (processing)
+- Changes: Decision section added.
+- Outcome: Draft → Accepted
 
 ---
 

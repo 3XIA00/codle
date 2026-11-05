@@ -249,10 +249,14 @@ If the script was successfully used, append as comments how, and what the outcom
 A browser word-guessing game in the Wordle genre — guess a hidden word, get colored per-letter feedback — whose answers are computer-science words (ARRAY, STACK, QUEUE, CACHE, TOKEN…). Built with Vue single-file components using scoped CSS so styles stay component-local, and hosted free on GitHub Pages. This repo is both the product and its decision record.
 
 ### Current focus:
-Settling the founding decisions before any code: build & deploy stack (ADR-0001), word and guess rules (ADR-0002), game mode & what "records" means (ADR-0003).
+Building v1 of **Codle**: scaffold, scoring logic with tests, curated CS answer list, board + keyboard UI, Pages deploy.
 
 ### Key decisions made:
-*(List ADRs here as they land, e.g. `- Auth approach — see docs/adr/0001-*.md`. Empty at birth is healthy.)*
+- Stack: Vite + Vue 3 + TypeScript, deployed to Pages by GitHub Actions, base `/codle/` — see docs/adr/0001-build-and-deploy-stack.md
+- Words: fixed 5 letters, CS answers, English + CS guesses — see docs/adr/0002-word-and-guess-rules.md
+- Mode: daily + practice, no play status stored ("records" = this decision record) — see docs/adr/0003-game-mode-and-what-records-means.md
+- Gate & template maintenance: kintsugi adopted, UTF-8 fix — see docs/adr/0004-template-maintenance-and-gate-policy.md
+- Name: Codle; repo renamed to `codle` — see docs/adr/0005-game-name.md
 
 ### Open questions:
 ```bash

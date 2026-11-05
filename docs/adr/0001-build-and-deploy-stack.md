@@ -9,8 +9,8 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 # ADR-0001: Build and deploy stack
 
 - **Date**: 2026-11-05
-- **Iteration**: 1
-- **Status**: Draft
+- **Iteration**: 2
+- **Status**: Accepted
 - **Deciders**: 3XIA00, Claude Opus 5.5
 
 **TL;DR**: Your two constraints (Vue with scoped CSS, free GitHub Pages hosting) together mean we need a build step and a deploy pipeline. Which toolchain do we use?
@@ -47,7 +47,7 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 ## Questions
 
 ### QST-STACK: Which build-and-deploy toolchain should the Vue app use?
-- Status: unanswered
+- Status: answered
 - Why asking: Scoped CSS requires Vue single-file components, and those need a build step. GitHub Pages serves only static files from a subpath (`/wordle-with-records/`). This choice determines the project layout, the test runner, the gate command in CLAUDE.md's Fifth Directive, and how a push becomes a live site. It's the first thing the code depends on.
 - Need: pick a letter (or override — any shape answers)
 
@@ -62,14 +62,25 @@ Options:
 **A — Vite + TypeScript + Actions.** *Rationale*: It's the only option that meets both stated requirements (scoped CSS via SFCs, free Pages hosting) with nothing extra to maintain. `npm create vue@latest` is Vue's officially documented scaffold, and Vitest comes with it, which the Fourth Directive's tests need. An Actions deploy makes "pushed to main" and "live" the same thing, so D's drift can't happen. I lean TypeScript over JavaScript because the game's core is a small pure function (score a guess against an answer) where types and tests reinforce each other. C fails the scoped-CSS requirement as stated. *Confidence*: 0.8 — because the requirements logic (scoped CSS needs a compiler) is firm, but the TS-vs-JS split depends on your comfort with TypeScript, which I don't know. *If wrong*: if you'd rather read and write the code without type annotations, this flips to **B**. If you decide component-local styles matter less than zero tooling, it flips to **C**.
 
 **ANS:** (by 3XIA00)
-[Fill this in]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+[Go with A. Complie-time checks is definately useful.]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+
+---
+
+## Decision
+
+**Chosen: A — Vite + TypeScript + Actions** (3XIA00, 2026-11-05: compile-time checks are worth it).
+
+- Scaffold from `create-vue` (Vue 3, TypeScript, Vitest) at the repo root.
+- `base: '/codle/'`, because the repo is renamed to `codle` per [ADR-0005](0005-game-name.md). This supersedes `/wordle-with-records/` above.
+- GitHub Actions builds and publishes to Pages on every push to `main`. No build output is committed.
+- The verification gate becomes typecheck + `npm test` + `npm run build`, run from `just gate`.
 
 ---
 
 ## Open Follow-ups
 
 - [ ] Unverified assumption: the repo is public (needed for free Pages). Check before the first deploy.
-- [ ] Future task: once the stack is chosen, wire `npm test` and `npm run build` into the `justfile` `gate` recipe's project slot and update the Fifth Directive's **Why** paragraph.
+- [x] Future task: once the stack is chosen, wire `npm test` and `npm run build` into the `justfile` `gate` recipe's project slot and update the Fifth Directive's **Why** paragraph.
 - [ ] Future task: enable Pages in the repo settings (Source: GitHub Actions). This is a one-time manual click by the repo owner.
 
 ---
@@ -81,6 +92,12 @@ Options:
 - Contributors: 3XIA00 (requirements), Claude Opus 5.5 (structure, recommendation)
 - Changes: Created, with one open question (QST-STACK).
 - Outcome: Draft
+
+### Iteration 2 (2026-11-05)
+- Trigger: 3XIA00 answered QST-STACK (A); ADR-0005 renamed the repo to `codle`.
+- Contributors: 3XIA00 (decision), Claude Opus 5.5 (processing)
+- Changes: Decision section added; base path set to `/codle/`.
+- Outcome: Draft → Accepted
 
 ---
 

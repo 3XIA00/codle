@@ -9,8 +9,8 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 # ADR-0003: Game mode and what "records" means
 
 - **Date**: 2026-11-05
-- **Iteration**: 1
-- **Status**: Draft
+- **Iteration**: 2
+- **Status**: Accepted
 - **Deciders**: 3XIA00, Claude Opus 5.5
 
 **TL;DR**: Is it one shared puzzle per day or unlimited play, and does "with records" mean player stats (local or shared) or only this repo's decision record?
@@ -45,7 +45,7 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 ## Questions
 
 ### QST-MODE-RECORDS: Which game mode, and what kind of player records (if any)?
-- Status: unanswered
+- Status: answered — records half only; the game-mode half split out to QST-GAME-MODE below
 - Why asking: The repo is named `wordle-with-records`, but "records" could mean this decision record, personal stats, or a shared leaderboard. GitHub Pages serves only static files, so a shared leaderboard means adding a hosted backend, while personal stats fit in the browser. The game mode (one shared daily word vs unlimited random words) decides how the answer list is used and whether results are comparable between players. Together these determine whether the project stays purely static.
 - Need: pick a letter (or override — any shape answers)
 
@@ -60,13 +60,39 @@ Options:
 **A — Daily + practice, local stats.** *Rationale*: A keeps the whole project on static GitHub Pages hosting (ADR-0001) while keeping both things that make the genre fun: a shared daily word you can compare with friends, and practice when you want more than one game a day. Local stats are a small addition (a single `localStorage` key), and the deterministic date-to-word choice is a pure function we can test. C's leaderboard can't be trustworthy while the answers ship in the client bundle (ADR-0002's assumption), so it costs a backend without delivering fair records. *Confidence*: 0.65 — because it depends entirely on what you meant by "records", which only you know. *If wrong*: if "records" was meant as a shared competitive leaderboard, this flips to **C**, and ADR-0001 gains a backend. If it only meant the decision record and you want the smallest v1, it flips to **D**.
 
 **ANS:** (by 3XIA00)
-[Fill this in]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+[the name with records actually means the game is developed with ADR records. So do not worry about the recording part. We do not record any play status.]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+
+---
+
+### QST-GAME-MODE: With no play status stored, which puzzles do players get?
+- Status: answered — asked and answered in chat, 2026-11-05
+- Why asking: The answer to QST-MODE-RECORDS settled records (none: "records" means this decision record) but not the game mode. Nothing is stored between visits, so refreshing the page restarts the current game either way. The remaining choice is whether players share a daily word, get unlimited random words, or both.
+- Need: pick a letter (or override — any shape answers)
+
+Options:
+- **A — Daily + practice**: One shared word per day, picked from the date, plus a "new word" button for unlimited practice. Nothing saved.
+- **B — Unlimited only**: Every game is a random CS word. Simplest; players never share a puzzle.
+- **C — Daily only**: One word per day, nothing else. Smallest scope; nothing to play after finishing.
+
+**Recommendation**: (by Claude Opus 5.5, 2026-11-05)
+
+**A — Daily + practice.** *Rationale*: The daily word is the only thing that lets classmates compare results. With stats ruled out, comparing is the genre's remaining social hook, and the date-to-word choice is a small pure function we can test. Practice costs one button and reuses the same game. *Confidence*: 0.7 — because both halves are cheap, but whether you care about sharing is your call. *If wrong*: if sharing a puzzle doesn't matter to you, this flips to **B**.
+
+**ANS:** (by 3XIA00, 2026-11-05)
+Daily + practice.
+
+---
+
+## Decision
+
+- **Records**: none. "With records" in the repo name means *developed with decision records*; the game stores no play status (3XIA00).
+- **Mode**: daily + practice (QST-GAME-MODE, A). Daily word = shuffled answer list indexed by days since a fixed epoch, using the player's **local** date. Practice draws a random answer. Nothing goes in `localStorage`.
 
 ---
 
 ## Open Follow-ups
 
-- [ ] Concern: what the game is *called* in the UI. "Wordle" is a trademark, and the repo name is fine as an internal label, but the page title and logo should be our own name (a pun on the CS theme?). Settle this before the first public deploy.
+- [x] Concern: what the game is *called* in the UI — moved to and settled in [ADR-0005](0005-game-name.md) ("Codle").
 - [ ] Future task: if a daily mode is chosen, the answer list needs a fixed, shuffled order so tomorrow's word isn't just the next one alphabetically. Its length sets how many days pass before words repeat.
 
 ---
@@ -78,6 +104,12 @@ Options:
 - Contributors: 3XIA00 (requirements), Claude Opus 5.5 (structure, recommendation)
 - Changes: Created, with one open question (QST-MODE-RECORDS).
 - Outcome: Draft
+
+### Iteration 2 (2026-11-05)
+- Trigger: 3XIA00 answered QST-MODE-RECORDS (records part); the game-mode half asked in chat.
+- Contributors: 3XIA00 (decisions), Claude Opus 5.5 (processing)
+- Changes: Minted QST-GAME-MODE for the unanswered half, recorded the chat answer (A), added a Decision section.
+- Outcome: Draft → Accepted
 
 ---
 

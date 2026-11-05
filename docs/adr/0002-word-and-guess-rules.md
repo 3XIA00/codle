@@ -9,8 +9,8 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 # ADR-0002: Word and guess rules
 
 - **Date**: 2026-11-05
-- **Iteration**: 1
-- **Status**: Draft
+- **Iteration**: 2
+- **Status**: Accepted
 - **Deciders**: 3XIA00, Claude Opus 5.5
 
 **TL;DR**: The answers are CS words, but how long are they, and what is the player allowed to type as a guess?
@@ -47,7 +47,7 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 ## Questions
 
 ### QST-WORD-RULES: What length are the words, and what counts as a valid guess?
-- Status: unanswered
+- Status: answered
 - Why asking: The answers are computer-science words (your examples ARRAY, STACK, QUEUE, CACHE, TOKEN are all five letters, but many CS words aren't). The game has two word lists: *answers* (what it picks from) and *allowed guesses* (what it accepts as typed input). This choice sets the board layout, how big the curated CS list must be, whether we need an English dictionary file (with a license to check), and how fair the game feels to someone who doesn't share our exact vocabulary.
 - Need: pick a letter (or override — any shape answers)
 
@@ -62,7 +62,17 @@ Options:
 **A — Five letters, CS answers, English guesses.** *Rationale*: All five of your examples are 5 letters, so you're already picturing a 5-wide board. Five letters still leaves a usable CS pool (ARRAY, STACK, QUEUE, CACHE, TOKEN, MUTEX, GRAPH, PARSE, CLASS, FLOAT, CONST, DEBUG, LOGIC, MERGE, SHELL, FETCH, BYTES, SCOPE…). Accepting English guesses keeps the game fair to players who don't know our vocabulary, while the answers stay on theme. B punishes those players, C kills the puzzle, and D roughly triples the UI and data work for a v1. *Confidence*: 0.7 — because the length choice is well supported by your examples, but whether the curated pool reaches enough words (I'd want at least ~150 for a daily game to last months) is a count I haven't done yet. *If wrong*: if a careful curation pass finds fewer than ~100 good 5-letter CS words, this flips to **D** (variable length). If you'd rather the theme be strict even at some cost to fairness, it flips to **B**.
 
 **ANS:** (by 3XIA00)
-[Fill this in]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+[Go with A. It is exactly what I am thinking.]   <!-- literal placeholder — parser-significant, do not paraphrase -->
+
+---
+
+## Decision
+
+**Chosen: A — Five letters, CS answers, English guesses** (3XIA00, 2026-11-05: "exactly what I am thinking").
+
+- Answers: a curated list of 5-letter computer-science words (`src/game/answers.ts`).
+- Allowed guesses: the answer list plus a permissively licensed English 5-letter word list.
+- Coloring follows the two-pass rule in Explicitation item 3, with regression tests for repeated letters.
 
 ---
 
@@ -81,6 +91,12 @@ Options:
 - Contributors: 3XIA00 (requirements), Claude Opus 5.5 (structure, recommendation)
 - Changes: Created, with one open question (QST-WORD-RULES).
 - Outcome: Draft
+
+### Iteration 2 (2026-11-05)
+- Trigger: 3XIA00 answered QST-WORD-RULES (A).
+- Contributors: 3XIA00 (decision), Claude Opus 5.5 (processing)
+- Changes: Decision section added.
+- Outcome: Draft → Accepted
 
 ---
 
