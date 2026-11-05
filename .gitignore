@@ -7,3 +7,12 @@
 # Python temporary files
 __pycache__/
 *.py[cod]
+
+# Node / Vite (Codle app — ADR-0001)
+node_modules/
+dist/
+coverage/
+*.local
+*.log
+*.tsbuildinfo
+*.timestamp-*-*.mjs

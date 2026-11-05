@@ -1,0 +1,27 @@
+/* The only global CSS: theme variables and the page itself. Every component's
+   own styles are <style scoped> (ADR-0001). Palette: a dark code-editor look,
+   Codle's own — not the original game's (ADR-0005). */
+:root {
+  --bg: #0f1419;
+  --fg: #e6e1cf;
+  --muted: #8a9199;
+  --line: #2d3640;
+  --line-strong: #5c6773;
+  --key: #232b33;
+  --accent: #39bae6;
+  --correct: #3d9a50;
+  --present: #c08b20;
+  --absent: #3a434d;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-monospace, 'Cascadia Code', 'JetBrains Mono', Consolas, Menlo, monospace;
+}
