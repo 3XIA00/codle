@@ -79,7 +79,7 @@ Options:
 
 ## Open Follow-ups
 
-- [ ] Unverified assumption: the repo is public (needed for free Pages). Check before the first deploy.
+- [x] Unverified assumption: the repo is public (needed for free Pages). Verified 2026-11-05: `gh repo view` reports `PUBLIC`.
 - [x] Future task: once the stack is chosen, wire `npm test` and `npm run build` into the `justfile` `gate` recipe's project slot and update the Fifth Directive's **Why** paragraph.
 - [ ] Future task: enable Pages in the repo settings (Source: GitHub Actions). This is a one-time manual click by the repo owner.
 

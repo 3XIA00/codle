@@ -78,9 +78,9 @@ Options:
 
 ## Open Follow-ups
 
-- [ ] Concern: what counts as a "CS word"? Acronyms (ASCII, REGEX), jargon (MUTEX, NONCE), language or product names (LINUX, REACT, RUST?). This is a curation policy to settle when we build the list, not before the stack.
-- [ ] Future task: find a permissively licensed English 5-letter word list if A (or D) is chosen, and record its license.
-- [ ] Future task: regression tests for repeated-letter coloring (e.g. QUEUE vs EERIE, ARRAY vs RARER).
+- [x] Concern: what counts as a "CS word"? Settled for v1 by Claude when building the list (2026-11-05). Overridable — say the word and it changes. Included: vocabulary a CS student would recognize (data structures, keywords, systems/networking/security/ML jargon). Excluded: proper nouns and products (LINUX, REACT), pure acronyms (ASCII, HTTPS), and plurals. REGEX is included as an everyday word. Result: 154 answers in `src/game/answers.ts` — above the ~150 the recommendation asked for, so the variable-length fallback (D) isn't needed. At one per day that's about 5 months before the cycle repeats.
+- [x] Future task: find a permissively licensed English 5-letter word list. Used **ENABLE** (`enable1.txt`, public domain), 8,636 five-letter words → `src/game/data/guesses.txt`, built by `scripts/ephemeral/2026-11-05-build-guess-list.py`. MUTEX and CONST aren't in ENABLE, so allowed guesses = ENABLE ∪ answers (a test guarantees every answer is guessable).
+- [x] Future task: regression tests for repeated-letter coloring — `src/game/__tests__/game.spec.ts` (QUEUE/EERIE, ERROR/RARER, ARRAY/RARER).
 
 ---
 
