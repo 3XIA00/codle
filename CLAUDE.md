@@ -92,7 +92,7 @@ Before serving any change:
 2. Fix any failures before committing
 3. Never serve changes with a failing gate
 
-**Why**: Today (no app code yet) `just gate` runs the template's day-one checks — unfilled instantiation placeholders, lingering fixture files, and a malformed crew registry. When the Vue app lands, the gate's project slot in the `justfile` gains the app's test suite and production build (`npm test` + `npm run build`), which catch the classes of bug that matter here: wrong letter coloring (especially repeated letters), answer-list/guess-list mismatches, and a build that would publish a broken GitHub Pages site. This paragraph gets updated with the real commands when they exist.
+**Why**: Today (no app code yet) `just gate` runs the template's day-one checks — unfilled instantiation placeholders, lingering fixture files, kintsugi wiring, a malformed crew registry — plus `python3 -m unittest discover -s tests`. On its first green run it had already caught a real bug: the template's scripts crashed reading UTF-8 on this Windows/GBK machine (ADR-0004). When the Vue app lands, the gate's project slot in the `justfile` gains the app's test suite and production build (`npm test` + `npm run build`), which catch the classes of bug that matter here: wrong letter coloring (especially repeated letters), answer-list/guess-list mismatches, and a build that would publish a broken GitHub Pages site. This paragraph gets updated with the real commands when they exist.
 
 **Process**:
 ```bash

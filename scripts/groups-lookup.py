@@ -18,7 +18,7 @@ from pathlib import Path
 def load_agent_sessions(config_path="docs/inbox/agent-sessions.json"):
     """Load and parse agent-sessions.json."""
     try:
-        with open(config_path) as f:
+        with open(config_path, encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
         print(f"Error: {config_path} not found", file=sys.stderr)

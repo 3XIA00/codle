@@ -33,7 +33,7 @@ def load_config() -> dict:
             "`just discover-sessions` to find session UUIDs for new agents."
         )
     try:
-        with ALIAS_FILE.open() as f:
+        with ALIAS_FILE.open(encoding="utf-8") as f:
             return json.load(f)
     except json.JSONDecodeError as e:
         sys.exit(f"Alias file is not valid JSON: {e}")

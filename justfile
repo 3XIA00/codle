@@ -527,6 +527,7 @@ gate:
     just instantiate-check
     python3 scripts/groups-lookup.py --validate
     # ADD YOUR PROJECT'S OWN GATE HERE when it exists (test suite, build, linter)
+    python3 -m unittest discover -s tests -q
     echo "✅ gate green (day-one checks; project gate slot above)"
 
 # Is this instance fully instantiated? Greps for remaining ⟦SIGIL⟧ placeholders
