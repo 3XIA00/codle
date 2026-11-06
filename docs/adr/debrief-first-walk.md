@@ -111,8 +111,9 @@ In guide order, one heading per guide step: its title, then its step ID in paren
 - **If your collaborator asks you a decision through a pick-one menu, answer, then add your reason in plain chat** — or ask it to put the question in a card. A menu pick records *what*, never *why*; our `cold-resume` caught exactly that.
 - **Play locally before going live.** And do `cold-resume` in a fresh terminal: it's the step that tests whether any of this was worth writing down. Ours found the one gap nothing else could.
 
-**From 3XIA00:**
-- [3XIA00 to fill]
+**From 3XIA00** (grammar lightly edited by Claude, reviewed and approved by 3XIA00):
+- When you ask Claude Code to write the debrief, send the guide's link along with the prompt.
+- If Claude Code uses a picker to ask you for a big-picture decision, tell her to put the question in an ADR instead. Otherwise you can end up with a decision recorded without its reason, as happened to us.
 
 ---
 
