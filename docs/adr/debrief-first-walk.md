@@ -39,7 +39,7 @@ Observed spans come from commit timestamps (local time). They are wall-clock, so
 | *(off-guide)* doubts, kintsugi, `python3`, UTF-8 bug, workspace settings | — | 17:59 → 18:23 | 24 min | "debugging is extra", as the guide warns |
 | `first-answers` + processing | 12 | 18:23 → 18:47 | 24 min | includes a VS Code font-size side question and two follow-up questions asked in chat |
 | `ship-pages`: build | 10 (whole step) | 18:47 → 18:55 | 8 min | |
-| `tweaks` (answer-list override) | 8 | 18:55 → 19:12 | 17 min | done *before* going live |
+| `tweaks` — added LINUX, REACT, ASCII, HTTPS + 20 more to the answers | 8 | 18:55 → 19:12 | 17 min | done *before* going live |
 | `ship-pages`: play locally, then go live | (see above) | 19:12 → 19:30 | 18 min | 3XIA00 chose to play locally first |
 | *(off-guide)* deprecated-Node fix in the workflow | — | 19:30 → 19:37 | 7 min | |
 | `debrief` (Ch. 4) | 5 | 19:37 → | — | this file, two drafts |
@@ -83,7 +83,10 @@ In guide order. Each item says whether the gap is in the **guide**, the **templa
 
 **Guide-level: the default name** *(guide)*. The guide frames the project as "a Wordle variant" and defaults the public repo to `wordle-with-records`, so every walker publishes a public Pages site under a "wordle" URL. "Wordle" is a NYT trademark, and (as Claude recalls, unverified here) GitHub disabled many Wordle-named clone repos after NYT takedown notices in early 2025. The mechanic is free to use; the name isn't. This walk raised it at `project-blurb`, and it cost a mid-walk rename (ADR-0005). A neutral default repo name and on-screen name would spare every walker that.
 
-**`tweaks`** — our tweak (admitting names and acronyms) was a direct ruling in chat, recorded as ADR-0002 iteration 3 with no new card. The verify's `grep '^### QST'` counts cards, so a tweak decided without one doesn't show up there; it shows in the record's Iterations instead.
+**`tweaks`** ("Tweaks, the deliberate way") — **our tweak: more answer words.** After seeing the first word list, 3XIA00 asked for well-known names and acronyms ("words like Linux, react, ascii, https are popular and well known"). Claude added those four plus 20 of the same kind (MYSQL, NGINX, REDIS, SWIFT, KAFKA, POSIX…), taking the answers from 154 to 178. Live since the first deploy. Three differences from the step as written:
+- *(guide)* **Order.** The step requires `ship-pages` ("the tweak is live"); ours came *before* going live, because 3XIA00 reviewed the word list while playing locally. Tweaking before shipping worked fine. The step could allow either order.
+- *(Claude)* **No card, but there was a fork.** The guide's ask is "if there's a real fork in how, QST it; if not, just build." 3XIA00's ruling was clear (admit names and acronyms), but *which* extra 20 words to add was a fork Claude settled alone, offering a veto in chat instead of a card. It's recorded as ADR-0002 iteration 3, with the 20 words listed as Claude's picks.
+- *(guide)* **The verify can't see it.** The verify's `grep '^### QST'` counts cards, so a tweak decided without one doesn't show up; it shows in ADR-0002's Iterations instead.
 
 **`cold-resume`** — walked by 3XIA00 with the guide's command (no auto-memory, no `git log`). Graded on the guide's two axes:
 - **The reader: honest.** In 3XIA00's words, "it knows what the records says without an error".
