@@ -44,4 +44,4 @@ Chosen option: "install kintsugi, fix the machine, fix the scripts", because it'
 ## Links
 
 * Related: [ADR-0001](0001-build-and-deploy-stack.md) (the gate's future npm commands)
-* Upstream: the UTF-8 bug affects every Windows user with a non-UTF-8 locale. Worth reporting to the template (ADRs4AI/human-ai-collaboration-template-A) if 3XIA00 agrees.
+* Upstream: reported 2026-11-05 with 3XIA00's OK as [ADRs4AI/human-ai-collaboration-template-A#3](https://github.com/ADRs4AI/human-ai-collaboration-template-A/issues/3). At 3XIA00's request it is flagged as **low frequency**: it needs Windows, a non-UTF-8 system code page, and Python ≤ 3.14 (3.15 defaults `open()` to UTF-8, PEP 686). If the template ships the fix, take it at the next `kintsugi update` and our local change becomes a no-op.
