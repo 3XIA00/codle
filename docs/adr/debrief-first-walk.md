@@ -8,7 +8,7 @@
 - **Pair**: 3XIA00 (human, first deliberately built project) · Claude Opus 5.5 (Claude Code, single seat)
 - **Platform**: **Windows 11** (the guide's tentative path), Git Bash, Chinese (GBK) system locale, VS Code + ADRs for AI, template v3.12.4
 - **Outcome**: Codle is live at https://3xia00.github.io/codle/ (repo `3XIA00/codle`, renamed from `wordle-with-records` mid-walk)
-- **Walked**: Ch. 3 `recruit` → `tweaks`, then Ch. 4 `debrief`. **Not yet walked: `cold-resume`.** Ch. 1–2 and `gh-signup` → `clone-open` happened before Claude's session, so Claude can't report on them.
+- **Walked**: Ch. 3 `recruit` → `tweaks`, Ch. 4 `debrief`, then `cold-resume` (by 3XIA00, in a separate session; result below). Ch. 1–2 and `gh-signup` → `clone-open` happened before Claude's session, so Claude can't report on them.
 
 NOT: this is a retrospective, not an incident debrief (the template's `templates/debrief.md` mold is incident-shaped, so it wasn't used). No open questions here.
 
@@ -71,7 +71,7 @@ In guide order. Each item says whether the gap is in the **guide**, the **templa
 - *(guide + template)* **Answering in the file doesn't drain the list.** Writing under `**ANS:**` doesn't change the card's `- Status: unanswered` line, so the questions stay counted as open until the collaborator processes them. The CLI reported "inconsistent: unanswered label but has a real answer". The verify line ("the extension's list drains to zero") doesn't hold for file-answerers at answer time.
 - *(guide)* **Answers were typed inside the brackets.** "The `[Fill this in]` placeholder marks the blank, type your answer" led to `[Go with A. …]`, with the `<!-- literal placeholder … do not paraphrase -->` comment left beside a real answer. The parser coped, but the record now mislabels its own answers. A one-line "replace the whole line, brackets and comment included" would prevent it.
 - Matched: the ANS byline carried 3XIA00 (`adrManager.humanName` was set at `recruit`).
-- *(template)* ADRs for AI raises diagnostics on the template's own forms: every `**TL;DR**:` line (d6 "preamble field missing `- ` prefix"), and the MADR mold's `* Status: accepted` (BULLET_FORMAT, UNKNOWN_STATUS). The diagnostics cite `docs/adr/0013-…` and `0019-…`, which don't exist in an instance.
+- *(template)* ADRs for AI raises diagnostics on the template's own forms: every `**TL;DR**:` line (d6 "preamble field missing `- ` prefix"), and the MADR mold's `* Status: accepted` (BULLET_FORMAT, UNKNOWN_STATUS). The diagnostics cite `docs/adr/0013-…` and `0019-…`, which don't exist in an instance. The extension also flags question-status annotations (`- Status: answered — <why>`) as NONSTANDARD_STATUS_ANNOTATION, while the template's `adr-authoring` skill teaches that "whoever flips a status owes the one-line annotation". The template and the extension disagree on this.
 
 **`ship-pages`**
 - *(guide)* `brew install node` is macOS-only; there's no Windows line (Node was preinstalled here anyway).
@@ -84,7 +84,10 @@ In guide order. Each item says whether the gap is in the **guide**, the **templa
 
 **`tweaks`** — our tweak (admitting names and acronyms) was a direct ruling in chat, recorded as ADR-0002 iteration 3 with no new card. The verify's `grep '^### QST'` counts cards, so a tweak decided without one doesn't show up there; it shows in the record's Iterations instead.
 
-**`cold-resume`** — **not walked yet.** It needs a new terminal and a session that has never seen today, so it can't be done in this one.
+**`cold-resume`** — walked by 3XIA00 with the guide's command (no auto-memory, no `git log`). Graded on the guide's two axes:
+- **The reader: honest.** In 3XIA00's words, "it knows what the records says without an error".
+- **The record: gap → repaired.** The fresh session couldn't say *why* 3XIA00 chose daily + practice (ADR-0003, QST-GAME-MODE). *(Claude, and possibly worth a guide note)*: Claude had asked that question through Claude Code's interactive pick-one menu, which has no field for a reason, then recorded the pick in its own words ("Daily + practice.") under 3XIA00's byline. The gap was invisible to every other check: parser, gate, open-question count. The reason, once asked in plain chat, turned out to differ from Claude's recommendation rationale, so without it a reader would have mistaken the collaborator's reason for the decider's. Repaired in ADR-0003 iteration 3; the rule is ADR-0006 (decisions go to a card or plain chat; menus only for logistics). **For the guide:** `first-answers` says "the reason should be yours" for card answers; the same needs saying for answers given in chat, especially through a menu.
+- Second half (a changed constraint, does anything reopen?) — not walked.
 
 **`debrief`** — the paste worked as written. Claude's first draft was written without having seen the guide; this second draft was written after 3XIA00 pointed Claude at it. Worth noting: the collaborator can't fill "where the guide didn't match" from inside the walk unless it is given the guide's URL.
 
@@ -99,7 +102,8 @@ In guide order. Each item says whether the gap is in the **guide**, the **templa
 - **One decision per card.** If you can imagine answering half of it, it's two cards.
 - **Raise doubts early.** "Scoped CSS needs a build step" and "the repo name is the public URL" each settled a decision before any code existed. The trademark doubt led to the rename *before* the first deploy, when it was free.
 - **Ask your collaborator to check current versions of anything it pins.** Ours pinned GitHub Actions from memory and got a deprecation warning on the first deploy.
-- **Play locally before going live.** And do `cold-resume` in a fresh terminal: it's the step that tests whether any of this was worth writing down.
+- **If your collaborator asks you a decision through a pick-one menu, answer, then add your reason in plain chat** — or ask it to put the question in a card. A menu pick records *what*, never *why*; our `cold-resume` caught exactly that.
+- **Play locally before going live.** And do `cold-resume` in a fresh terminal: it's the step that tests whether any of this was worth writing down. Ours found the one gap nothing else could.
 
 **From 3XIA00:**
 - [3XIA00 to fill]

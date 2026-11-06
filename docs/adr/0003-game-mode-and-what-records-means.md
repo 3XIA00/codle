@@ -9,7 +9,7 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 # ADR-0003: Game mode and what "records" means
 
 - **Date**: 2026-11-05
-- **Iteration**: 2
+- **Iteration**: 3
 - **Status**: Accepted
 - **Deciders**: 3XIA00, Claude Opus 5.5
 
@@ -65,7 +65,7 @@ Options:
 ---
 
 ### QST-GAME-MODE: With no play status stored, which puzzles do players get?
-- Status: answered — asked and answered in chat, 2026-11-05
+- Status: answered — picked from a menu in chat; reason added after the cold-resume test, 2026-11-05
 - Why asking: The answer to QST-MODE-RECORDS settled records (none: "records" means this decision record) but not the game mode. Nothing is stored between visits, so refreshing the page restarts the current game either way. The remaining choice is whether players share a daily word, get unlimited random words, or both.
 - Need: pick a letter (or override — any shape answers)
 
@@ -79,21 +79,27 @@ Options:
 **A — Daily + practice.** *Rationale*: The daily word is the only thing that lets classmates compare results. With stats ruled out, comparing is the genre's remaining social hook, and the date-to-word choice is a small pure function we can test. Practice costs one button and reuses the same game. *Confidence*: 0.7 — because both halves are cheap, but whether you care about sharing is your call. *If wrong*: if sharing a puzzle doesn't matter to you, this flips to **B**.
 
 **ANS:** (by 3XIA00, 2026-11-05)
-Daily + practice.
+A. "I picked A because the daily game is a mature game mode tested out by wordle for years (I am not sure exactly how long but definately long enough). It is lightweight. I agreed to add practice because it is helpful on testing and for the ones want to play multiple times a day."
+
+---
+
+NOT: **Provenance of this answer.** At the time, 3XIA00 picked A from an interactive menu in chat, which had no room for a reason. Claude then recorded the answer as "Daily + practice." — Claude's words under 3XIA00's byline, with no why. A cold-resume run (a fresh session with no memory and no `git log`) recovered the pick but could not recover the reason, because none was written. Claude asked in plain chat, and the quote above is 3XIA00's reply, verbatim.
+
+NOT: **The reason differs from the recommendation.** Claude's rationale was social: classmates can compare results. 3XIA00's reasons are a proven mode (years of play in the genre), lightweight, and practice for testing and replay. Without the quote, a reader would have mistaken Claude's rationale for the decider's. Reopen accordingly: if the daily mode stops being lightweight (e.g. it needs a server), or practice stops serving testing and replay, revisit — the recommendation's falsifier ("if sharing doesn't matter, flip to B") is Claude's, not the decider's.
 
 ---
 
 ## Decision
 
 - **Records**: none. "With records" in the repo name means *developed with decision records*; the game stores no play status (3XIA00).
-- **Mode**: daily + practice (QST-GAME-MODE, A). Daily word = shuffled answer list indexed by days since a fixed epoch, using the player's **local** date. Practice draws a random answer. Nothing goes in `localStorage`.
+- **Mode**: daily + practice (QST-GAME-MODE, A) — daily because it's a mode proven over years of play and lightweight; practice for testing and for players who want more than one game a day (3XIA00). Daily word = shuffled answer list indexed by days since a fixed epoch, using the player's **local** date. Practice draws a random answer. Nothing goes in `localStorage`.
 
 ---
 
 ## Open Follow-ups
 
 - [x] Concern: what the game is *called* in the UI — moved to and settled in [ADR-0005](0005-game-name.md) ("Codle").
-- [ ] Future task: if a daily mode is chosen, the answer list needs a fixed, shuffled order so tomorrow's word isn't just the next one alphabetically. Its length sets how many days pass before words repeat.
+- [x] Future task: if a daily mode is chosen, the answer list needs a fixed, shuffled order so tomorrow's word isn't just the next one alphabetically. Its length sets how many days pass before words repeat. Done: seeded shuffle in `src/game/daily.ts`, tested to use every answer once before repeating.
 
 ---
 
@@ -110,6 +116,12 @@ Daily + practice.
 - Contributors: 3XIA00 (decisions), Claude Opus 5.5 (processing)
 - Changes: Minted QST-GAME-MODE for the unanswered half, recorded the chat answer (A), added a Decision section.
 - Outcome: Draft → Accepted
+
+### Iteration 3 (2026-11-05)
+- Trigger: 3XIA00's cold-resume test — the fresh session found the QST-GAME-MODE pick but no reason for it.
+- Contributors: 3XIA00 (reason, in plain chat), Claude Opus 5.5 (repair)
+- Changes: Replaced Claude's paraphrase in the ANS with 3XIA00's verbatim reason; added provenance notes; Decision line now carries the decider's why; shuffle follow-up ticked. Process rule recorded in [ADR-0006](0006-decisions-carry-the-deciders-reason.md).
+- Outcome: Accepted (unchanged)
 
 ---
 

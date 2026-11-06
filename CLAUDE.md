@@ -257,6 +257,7 @@ Building v1 of **Codle**: scaffold, scoring logic with tests, curated CS answer 
 - Mode: daily + practice, no play status stored ("records" = this decision record) — see docs/adr/0003-game-mode-and-what-records-means.md
 - Gate & template maintenance: kintsugi adopted, UTF-8 fix — see docs/adr/0004-template-maintenance-and-gate-policy.md
 - Name: Codle; repo renamed to `codle` — see docs/adr/0005-game-name.md
+- Process: decisions go to a QST card or plain chat ("which, and why?"), never a pick-one menu alone; the ANS quotes the decider — see docs/adr/0006-decisions-carry-the-deciders-reason.md
 
 ### Open questions:
 ```bash
