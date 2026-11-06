@@ -83,9 +83,9 @@ A. "I picked A because the daily game is a mature game mode tested out by wordle
 
 ---
 
-NOT: **Provenance of this answer.** At the time, 3XIA00 picked A from an interactive menu in chat, which had no room for a reason. Claude then recorded the answer as "Daily + practice." — Claude's words under 3XIA00's byline, with no why. A cold-resume run (a fresh session with no memory and no `git log`) recovered the pick but could not recover the reason, because none was written. Claude asked in plain chat, and the quote above is 3XIA00's reply, verbatim.
+NOTE: **Provenance of this answer.** At the time, 3XIA00 picked A from an interactive menu in chat, which had no room for a reason. Claude then recorded the answer as "Daily + practice." — Claude's words under 3XIA00's byline, with no why. A cold-resume run (a fresh session with no memory and no `git log`) recovered the pick but could not recover the reason, because none was written. Claude asked in plain chat, and the quote above is 3XIA00's reply, verbatim.
 
-NOT: **The reason differs from the recommendation.** Claude's rationale was social: classmates can compare results. 3XIA00's reasons are a proven mode (years of play in the genre), lightweight, and practice for testing and replay. Without the quote, a reader would have mistaken Claude's rationale for the decider's. Reopen accordingly: if the daily mode stops being lightweight (e.g. it needs a server), or practice stops serving testing and replay, revisit — the recommendation's falsifier ("if sharing doesn't matter, flip to B") is Claude's, not the decider's.
+NOTE: **The reason differs from the recommendation.** Claude's rationale was social: classmates can compare results. 3XIA00's reasons are a proven mode (years of play in the genre), lightweight, and practice for testing and replay. Without the quote, a reader would have mistaken Claude's rationale for the decider's. Reopen accordingly: if the daily mode stops being lightweight (e.g. it needs a server), or practice stops serving testing and replay, revisit — the recommendation's falsifier ("if sharing doesn't matter, flip to B") is Claude's, not the decider's.
 
 ---
 

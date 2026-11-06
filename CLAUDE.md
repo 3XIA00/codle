@@ -212,8 +212,10 @@ COD:  # Code examples
 API:  # API calls
 FIL:  # Files to examine
 DOC:  # Documentation
-NOT:  # Notes, remarks, comments, observations
+NOTE: # Notes, remarks, comments, observations
 ```
+
+*This project writes notes as `NOTE:`, not the template's `NOT:`, which a first-time reader took as negation ("NOT: the reason differs" reads as its opposite). The template's molds and skills still teach `NOT:`: when following them, write `NOTE:`. See docs/adr/0007-notes-use-the-note-prefix.md.*
 
 **Find things — the typed verbs come first, grep is the fallback.** If this session has the `adrs4ai` MCP tools (look for `mcp__adrs4ai__*`), prefer them: they parse the record's grammar instead of reconstructing it, and writes through them cannot fumble a status flip. The ladder, macro → micro: `list_open_questions` (what needs answers, repo-wide) → `lookup` (one record) → `get_outline` → `get_sections` (section-level detail — **this rung exists; take it before reaching for grep**) → `answer_question` / `apply_batch` (writes). No MCP in the session? The same verbs answer in any shell — **the CLI, the second mouth**: `npx -y @adrs4ai/docket list-open` (always scoped, never bare `docket`; writes dry-run by default; exit codes certify structure, never readiness). This repo's `.mcp.json` already carries the MCP stanza (`@adrs4ai/mcp` via npx, server key `adrs4ai`) — a session restart loads it; the `adrs4ai-tooling` skill teaches both mouths, and the whole operator layer (these skills + `/adr:*` commands) is installable once, account-wide, as the **`adr` plugin**: `/plugin marketplace add ADRs4AI/plugins` → `/plugin install adr@adrs4ai`. Meanwhile the honest last-resort fallback:
 

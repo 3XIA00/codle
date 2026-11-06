@@ -10,7 +10,7 @@
 - **Outcome**: Codle is live at https://3xia00.github.io/codle/ (repo `3XIA00/codle`, renamed from `wordle-with-records` mid-walk)
 - **Walked**: Ch. 3 `recruit` → `tweaks`, Ch. 4 `debrief`, then `cold-resume` (by 3XIA00, in a separate session; result below). Ch. 1–2 and `gh-signup` → `clone-open` happened before Claude's session, so Claude can't report on them.
 
-NOT: this is a retrospective, not an incident debrief (the template's `templates/debrief.md` mold is incident-shaped, so it wasn't used). No open questions here.
+NOTE: this is a retrospective, not an incident debrief (the template's `templates/debrief.md` mold is incident-shaped, so it wasn't used). No open questions here.
 
 ---
 
@@ -72,6 +72,7 @@ In guide order. Each item says whether the gap is in the **guide**, the **templa
 - *(guide)* **Answers were typed inside the brackets.** "The `[Fill this in]` placeholder marks the blank, type your answer" led to `[Go with A. …]`, with the `<!-- literal placeholder … do not paraphrase -->` comment left beside a real answer. The parser coped, but the record now mislabels its own answers. A one-line "replace the whole line, brackets and comment included" would prevent it.
 - Matched: the ANS byline carried 3XIA00 (`adrManager.humanName` was set at `recruit`).
 - *(template)* ADRs for AI raises diagnostics on the template's own forms: every `**TL;DR**:` line (d6 "preamble field missing `- ` prefix"), and the MADR mold's `* Status: accepted` (BULLET_FORMAT, UNKNOWN_STATUS). The diagnostics cite `docs/adr/0013-…` and `0019-…`, which don't exist in an instance. The extension also flags question-status annotations (`- Status: answered — <why>`) as NONSTANDARD_STATUS_ANNOTATION, while the template's `adr-authoring` skill teaches that "whoever flips a status owes the one-line annotation". The template and the extension disagree on this.
+- *(template)* **The notes code `NOT:` reads as negation.** Reading ADR-0003, 3XIA00 asked whether `NOT:` meant "NOTE:". It's the template's three-letter notes code (`NOT:  # Notes, remarks, comments, observations`), but in prose it inverts the line: "NOT: The reason differs from the recommendation" can read as its opposite. 3XIA00: *"So the template give the prefix of note as not? Can we change the prefix to NOTE?"* This project switched to `NOTE:` (ADR-0007); the parser didn't treat inline `NOT:` lines as structure, so nothing broke. **Suggestion:** use `NOTE:` (or another non-word) in the template, or at least gloss it where it's taught. A code that's also a word with the opposite meaning trips exactly the readers the record is for.
 
 **`ship-pages`**
 - *(guide)* `brew install node` is macOS-only; there's no Windows line (Node was preinstalled here anyway).

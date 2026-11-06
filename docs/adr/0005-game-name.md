@@ -67,7 +67,7 @@ Options:
 - **Repo renamed** `wordle-with-records` → `codle` (3XIA00 approved the rename in chat, 2026-11-05). Pages URL: `https://3XIA00.github.io/codle/`.
 - **Own look**: a code-editor palette and monospace type, not the original's colors or layout.
 
-NOT: "Codle" isn't unique. As far as I know, other small word games use the same "code + -dle" coinage. I know of no registered trademark on it, but I can't check from here. If it matters (say, before promoting it widely), search the USPTO trademark database and the web for "Codle" first.
+NOTE: "Codle" isn't unique. As far as I know, other small word games use the same "code + -dle" coinage. I know of no registered trademark on it, but I can't check from here. If it matters (say, before promoting it widely), search the USPTO trademark database and the web for "Codle" first.
 
 ---
 
