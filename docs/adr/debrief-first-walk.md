@@ -35,7 +35,7 @@ Observed spans come from commit timestamps (local time). They are wall-clock, so
 
 | Step | Guide estimate | Observed span | ≈ | Notes |
 |---|---|---|---|---|
-| Ch. 1, Ch. 2, Ch. 3's GitHub account → Clone it, open it (`gh-signup` → `clone-open`) | 40 + ~12 min | before the session | — | 3XIA00 to fill |
+| Ch. 1, Ch. 2, Ch. 3's GitHub account → Clone it, open it (`gh-signup` → `clone-open`) | 40 + ~12 min | before the session | **2–3 min** (3XIA00) | all tools already installed; read through, created the repo from the template |
 | Recruit your collaborator + The questions come back (`recruit`, `project-blurb`) | 12 + 5 | 17:48 → 17:59 | 11 min | config commit + cards committed in the same minute |
 | *(off-guide)* doubts, kintsugi, `python3`, UTF-8 bug, workspace settings | — | 17:59 → 18:23 | 24 min | "debugging is extra", as the guide warns |
 | Your first answers (`first-answers`) + Claude processing them | 12 | 18:23 → 18:47 | 24 min | includes a VS Code font-size side question and two follow-up questions asked in chat |
@@ -47,7 +47,8 @@ Observed spans come from commit timestamps (local time). They are wall-clock, so
 | **Ch. 3 total** | **~65 min required** | 17:48 → 19:37 | **≈ 1 h 50 min** | ~30 min of it was off-guide fixes |
 
 **3XIA00's own account** (the commit clock can't see Ch. 1–2, reading time, breaks, or the felt effort):
-- [3XIA00 to fill]
+- *"I honestly spent only 2-3 mins in chapter 1-2 because I already have all the dependencies. I just read thought the chapters and created a repo from template."*
+- NOTE: for the guide's authors — the Ch. 2 estimate (~40 min) assumes a fresh macOS machine. A walker who already has the tools (here: on Windows, Node 24 and `just` preinstalled) skims it in minutes; the install-heavy time moved instead to off-guide fixes in Ch. 3 (kintsugi, `python3`, UTF-8), which Ch. 2's verify lines would not have caught on this platform.
 
 ---
 
