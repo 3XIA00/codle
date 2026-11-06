@@ -9,7 +9,7 @@ adr teaching map: the example is not the teaching — these are the up-links fro
 # ADR-0002: Word and guess rules
 
 - **Date**: 2026-11-05
-- **Iteration**: 2
+- **Iteration**: 3
 - **Status**: Accepted
 - **Deciders**: 3XIA00, Claude Opus 5.5
 
@@ -78,7 +78,7 @@ Options:
 
 ## Open Follow-ups
 
-- [x] Concern: what counts as a "CS word"? Settled for v1 by Claude when building the list (2026-11-05). Overridable — say the word and it changes. Included: vocabulary a CS student would recognize (data structures, keywords, systems/networking/security/ML jargon). Excluded: proper nouns and products (LINUX, REACT), pure acronyms (ASCII, HTTPS), and plurals. REGEX is included as an everyday word. Result: 154 answers in `src/game/answers.ts` — above the ~150 the recommendation asked for, so the variable-length fallback (D) isn't needed. At one per day that's about 5 months before the cycle repeats.
+- [x] Concern: what counts as a "CS word"? Settled for v1 by Claude when building the list (2026-11-05). Overridable — say the word and it changes. Included: vocabulary a CS student would recognize (data structures, keywords, systems/networking/security/ML jargon). ~~Excluded: proper nouns and products (LINUX, REACT), pure acronyms (ASCII, HTTPS)~~ — **overridden by 3XIA00, 2026-11-05**: *"words like Linux, react, ascii, https are popular and well known."* Well-known names and acronyms are now a second group, `NAMES_AND_ACRONYMS`, in `src/game/answers.ts`. Its 24 words were picked by Claude around 3XIA00's four examples: ASCII CMAKE COBOL EMACS FLASK HTTPS JULIA KAFKA KERAS LINUX MACOS MYSQL NGINX NOSQL NUMPY OAUTH OCAML POSIX REACT REDIS SCALA SPARK SWIFT XCODE. Plurals stay excluded. Result: 178 answers, about 6 months of daily puzzles before a repeat. The site isn't live yet, so reshuffling the daily order costs nothing.
 - [x] Future task: find a permissively licensed English 5-letter word list. Used **ENABLE** (`enable1.txt`, public domain), 8,636 five-letter words → `src/game/data/guesses.txt`, built by `scripts/ephemeral/2026-11-05-build-guess-list.py`. MUTEX and CONST aren't in ENABLE, so allowed guesses = ENABLE ∪ answers (a test guarantees every answer is guessable).
 - [x] Future task: regression tests for repeated-letter coloring — `src/game/__tests__/game.spec.ts` (QUEUE/EERIE, ERROR/RARER, ARRAY/RARER).
 
@@ -97,6 +97,12 @@ Options:
 - Contributors: 3XIA00 (decision), Claude Opus 5.5 (processing)
 - Changes: Decision section added.
 - Outcome: Draft → Accepted
+
+### Iteration 3 (2026-11-05)
+- Trigger: 3XIA00 overrode the curation policy in chat: well-known names and acronyms belong in the answers.
+- Contributors: 3XIA00 (decision), Claude Opus 5.5 (word selection, processing)
+- Changes: Curation follow-up updated; 24 names/acronyms added (154 → 178 answers).
+- Outcome: Accepted (unchanged)
 
 ---
 

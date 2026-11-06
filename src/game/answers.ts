@@ -1,13 +1,13 @@
 // Codle's answer pool: 5-letter computer-science words (ADR-0002).
 //
-// Curation policy (v1): vocabulary a CS student would recognize — data
-// structures, language keywords, systems/networking/security/ML jargon.
-// Excluded: proper nouns and product names (LINUX, REACT), pure acronyms
-// (ASCII, HTTPS), and plurals. Kept alphabetical for easy review; the daily
-// order is a seeded shuffle (see daily.ts).
+// Curation policy (ADR-0002): words a CS student would recognize, in two
+// groups below. Excluded: plurals. Each group is alphabetical for easy
+// review; the daily order is a seeded shuffle (see daily.ts).
 //
 // Editing this list reshuffles the daily order from that day on.
-export const ANSWERS: readonly string[] = [
+
+// Vocabulary: data structures, keywords, systems/networking/security/ML jargon.
+const VOCABULARY = [
   'ABORT', 'ADDER', 'ADMIN', 'AGENT', 'AGILE', 'ALIAS', 'ALIGN', 'ALLOC',
   'APPLY', 'ARITY', 'ARRAY', 'ASYNC', 'AWAIT', 'BATCH', 'BLAME', 'BLOCK',
   'BLOOM', 'BOUND', 'BRACE', 'BREAK', 'BUILD', 'CACHE', 'CARRY', 'CATCH',
@@ -29,3 +29,13 @@ export const ANSWERS: readonly string[] = [
   'TUPLE', 'UNARY', 'UNION', 'VALUE', 'VIRUS', 'VOXEL', 'WHILE', 'WIDTH',
   'WRITE', 'YIELD',
 ]
+
+// Well-known names and acronyms: languages, tools, products, protocols
+// (added at 3XIA00's request, 2026-11-05 — "popular and well known").
+const NAMES_AND_ACRONYMS = [
+  'ASCII', 'CMAKE', 'COBOL', 'EMACS', 'FLASK', 'HTTPS', 'JULIA', 'KAFKA',
+  'KERAS', 'LINUX', 'MACOS', 'MYSQL', 'NGINX', 'NOSQL', 'NUMPY', 'OAUTH',
+  'OCAML', 'POSIX', 'REACT', 'REDIS', 'SCALA', 'SPARK', 'SWIFT', 'XCODE',
+]
+
+export const ANSWERS: readonly string[] = [...VOCABULARY, ...NAMES_AND_ACRONYMS]
