@@ -81,7 +81,8 @@ Options:
 
 - [x] Unverified assumption: the repo is public (needed for free Pages). Verified 2026-11-05: `gh repo view` reports `PUBLIC`.
 - [x] Future task: once the stack is chosen, wire `npm test` and `npm run build` into the `justfile` `gate` recipe's project slot and update the Fifth Directive's **Why** paragraph.
-- [ ] Future task: enable Pages in the repo settings (Source: GitHub Actions). This is a one-time manual click by the repo owner.
+- [x] Future task: enable Pages in the repo settings (Source: GitHub Actions). Done 2026-11-05 via `gh api` at 3XIA00's "make it live". The first deploy (run 42137089004) passed, and https://3xia00.github.io/codle/ serves the game.
+- [ ] Concern: that first run warned that `actions/checkout@v4`, `actions/setup-node@v4`, and `actions/upload-artifact@v4` target the deprecated Node 20 runtime (GitHub currently forces them onto Node 24, so it works). Bump to the actions' next major versions before GitHub removes Node 20 entirely.
 
 ---
 
