@@ -96,6 +96,7 @@ In guide order, one heading per guide step: its title, then its step ID in paren
 - Second half (a changed constraint, does anything reopen?) — not walked.
 
 **"The debrief" (`debrief`, Ch. 4)** — the paste worked as written. Claude's first draft was written without having seen the guide; this second draft was written after 3XIA00 pointed Claude at it. Worth noting: the collaborator can't fill "where the guide didn't match" from inside the walk unless it is given the guide's URL.
+- *(guide)* **The walk-report form's step-ID example doesn't match the guide.** The form's first box says "step IDs like T3 or P5 are on every step", but the guide's step IDs are words (`first-answers`, `ship-pages`, …). Shared as walk report [jlumbroso/adrs4ai-getting-started#1](https://github.com/jlumbroso/adrs4ai-getting-started/issues/1), 2026-11-05. (The form's `walk-report` label is applied only via the web form; this issue was opened with `gh`, so it may lack the label.)
 
 ---
 
